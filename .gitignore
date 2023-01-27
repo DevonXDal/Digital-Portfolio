@@ -1,10 +1,15 @@
 .DS_STORE
 
+.angular/
+
 /dist/
 /bazel-out
 /integration/bazel/bazel-*
 *.log
 /node_modules/
+
+# fontawesome
+fontawesome/
 
 # CircleCI temporary file for cache key computation.
 # See `save_month_to_file` in `.circleci/config.yml`.
@@ -162,6 +167,53 @@ SpyStore.Service/.vs/
 
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# fontawesome
+fontawesome/
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+# System files
+.DS_Store
+Thumbs.db
+
 
 # Compiled source #
 ###################
