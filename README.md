@@ -1,4 +1,6 @@
-# This is currently WIP and will include more information upon successful deployment.
+# WIP
+
+More information will be included in this README once the portfolio has been deployed. The most recent recent version of the code can be found in the the develop branch and will be found in the main branch when it is ready to be used.
 
 # Who Am I?
 
