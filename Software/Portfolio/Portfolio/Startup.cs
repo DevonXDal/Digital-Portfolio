@@ -7,6 +7,8 @@ using Portfolio.Models;
 using Microsoft.Net.Http.Headers;
 using System.Text.Json;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Portfolio;
 
@@ -72,6 +74,13 @@ public class Startup
             options.SerializerSettings.ContractResolver = new DefaultContractResolver();
         });
         services.AddRazorPages();
+
+        // ----- Add SPA Static Files -----
+        services.AddSpaStaticFiles(configuration =>
+        {
+            configuration.RootPath = "ClientApp/dist"; // Should never change
+        });
+
 
         // Admin panel for accessing the database and controlling it through CRUD
         // services.AddCoreAdmin();

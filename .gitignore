@@ -1,6 +1,7 @@
 .DS_STORE
 
 .angular/
+published/
 
 /dist/
 /bazel-out
