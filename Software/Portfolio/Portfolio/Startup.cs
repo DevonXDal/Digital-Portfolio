@@ -1,19 +1,11 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Newtonsoft.Json.Serialization;
 using Microsoft.Extensions.FileProviders;
-using Microsoft.AspNetCore.HttpLogging;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using Portfolio.Data;
 using Portfolio.Models;
 using Microsoft.Net.Http.Headers;
+using System.Text.Json;
 using Microsoft.AspNetCore.Authentication;
 
 namespace Portfolio;
@@ -31,6 +23,8 @@ public class Startup
         var env = new Env(Configuration);
 
         services.AddSingleton<Env>(env); // Early injection of environment variables
+
+        // ----- Set up database, identity, OAuth (IdentityServer) -----
         services.AddDbContext<ApplicationDbContext>(options =>
         {
             // Configure the _context to use Microsoft SQL Server.

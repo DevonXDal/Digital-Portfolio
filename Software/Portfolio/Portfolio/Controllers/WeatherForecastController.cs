@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using static Portfolio.Helpers.ApiControllerHelperMethods;
 
 namespace Portfolio.Controllers
 {
@@ -22,16 +23,18 @@ namespace Portfolio.Controllers
         }
 
         [HttpGet]
-        public JsonResult Get()
+        public ContentResult Get()
         {
-            return new JsonResult(
-                Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            var weatherData = Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
                 TemperatureC = Random.Shared.Next(-20, 55),
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
-            .ToArray());
+            .ToArray();
+
+            return JsonCamelCaseContentResult(weatherData);
+               
         }
     }
 }
