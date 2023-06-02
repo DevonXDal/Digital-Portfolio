@@ -36,13 +36,14 @@ This is a digital portfolio meant to show off my current skills along with how m
 - Angular (v15) [Learn More](https://angular.io/)
 - TypeScript [Learn More](https://www.typescriptlang.org/)
 - Node (v18) [Learn More](https://nodejs.org/en/)
-- BulmaCSS [Learn More](https://bulma.io/) <= With SASS files
+- TailwindCSS [Learn More](https://bulma.io/) <= With SASS files
 - PrimeNG [Learn More](https://www.primefaces.org/primeng/)
 - FontAwesome [Learn More](https://fontawesome.com/)
 
 ### Back-End
 - ASP.NET 6 [Learn More](https://dotnet.microsoft.com/en-us/)
 - EF Core [Learn More](https://learn.microsoft.com/en-us/ef/core/)
+- Either Bootstrap or TailwindCSS
 
 ### Database
 - Database: PostgreSQL [Learn More](https://www.postgresql.org/)
