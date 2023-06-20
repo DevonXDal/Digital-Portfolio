@@ -1,0 +1,74 @@
+@startuml Backend__ERD
+
+note as n01 
+    As integrated projects and potentially comments are added, 
+    the ERD will be extended to allow for additional features.
+
+    OAuth and Identity are omitted for simplicity.
+    ApplicationUser has an admin role for the admin account 
+    and it autofills the contact form with relevent information.
+
+    
+end note
+
+/'
+    ----- CONFIGURATION -----
+'/
+
+' Uses right angles instead of using direct lines for the relationships
+skinparam linetype ortho
+
+/'
+    ----- ENTITIES -----
+'/
+
+' EntityBase is inherited by non-Identity, non-OAuth classes or their ancestors. Timestamp UTC is handled by .NET EF Core
+entity "EntityBase" as e00 {
+    * Id : integer <<generated>>
+    --
+    CreatedOn : timestamp (UTC)
+    LastModified : timestamp (UTC)
+    IsDeleted : boolean
+}
+
+' IdentityUser subclass that also links to all OAuth type services which are not shown for simplicity
+entity "ApplicationUser" as e01 {
+    * Id : text <<generated>>
+    --
+    * FirstName : text 
+    * LastName : text
+    * Email : VARCHAR(256)
+    PhoneNumber : text
+    **...**
+}
+
+' RelatedFile connects the filesystem to the database
+entity "RelatedFile" as e02 {
+    * Id : integer <<generated>>
+    --
+    * FilePath : VARCHAR(255)
+    * FileName : VARCHAR(255)
+}
+
+' BlogLikeUpdate represents the short update posts made by me on the "Updates" page
+entity "BlogLikeUpdate" as e03 {
+    * Id : integer <<generated>>
+    --
+    * Title : VARCHAR(50)
+    * Body : text 
+    ImageId : integer <<FK>>
+} 
+
+/'
+    ----- RELATIONSHIPS -----
+'/
+
+e02 --|> e00
+e03 --|> e00 
+
+e02 |o--o| e03
+
+
+
+
+@enduml
