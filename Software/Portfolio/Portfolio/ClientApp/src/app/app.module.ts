@@ -13,14 +13,20 @@ import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { PortfolioSummaryComponent } from './portfolio-summary/portfolio-summary.component';
+import { ContactMeComponent } from './contact-me/contact-me.component';
+import { LearnMoreModule } from './learn-more/learn-more.module';
+import { OtherContentModule } from './other-content/other-content.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent,
     CounterComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    PortfolioSummaryComponent,
+    ContactMeComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -28,7 +34,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     FormsModule,
     ApiAuthorizationModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: PortfolioSummaryComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
     ]),
@@ -37,7 +43,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    LearnMoreModule,
+    OtherContentModule,
+    SharedModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
