@@ -1,0 +1,27 @@
+@startmindmap Frontend__MindMap--SinglePageStructure
+* Single-Page Component Structure
+** Navbar
+** Router Outlet
+*** <b>Portfolio Summary Page</b>
+*** <b>Contact Me Page</b>
+**** Contact Me Form
+*** <b>Resume Page</b>
+**** PDF View and Download
+*** <b>Transcript Page</b>
+**** PDF View and Download
+*** <b>Skills Page</b>
+**** Skill Category Chart
+*** <b>Certifications Page</b>
+**** Credential Accordion Card
+*** <b>Other Credentials Page</b>
+**** Credential Accordion Card
+*** <b>Integrated Projects Page</b>
+**** (Nothing Yet)
+*** <b>Updates Page</b>
+**** Update Details Card
+**** Create Update Form
+*** <b>Login Page</b>
+*** <b>User Settings Page</b>
+*** <b>Logout Page</b>
+** Footer
+@endmindmap

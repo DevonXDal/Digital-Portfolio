@@ -1,0 +1,12 @@
+@startmindmap Frontend__MindMap--UrlNavigation
+* / => <b>Portfolio Summary Page</b>
+** <b>Contact Me Page</b>
+** /LearnMore/ => Redirect to Resume Page
+*** /LearnMore/Resume => <b>Resume Page</b>
+*** /LearnMore/Transcript => <b>Transcript Page</b>
+*** /LearnMore/Certifications => <b>Certifications Page</b>
+*** /LearnMore/Credentials => <b>Other Credentials Page</b>
+** /OtherContent/ => Redirect to Updates Page
+*** /OtherContent/IntegratedProjects/ => <b>Integrated Projects Page</b>
+*** /OtherContent/Updates => <b>Updates Page</b>
+@endmindmap
