@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,4 +6,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  public theme: 'light' | 'dark' = 'light';
+
+  constructor() {}
+
+  /// Toggles between light and dark mode theme
+  toggleTheme() {
+    this.theme = (this.theme === 'light') ? 'dark' : 'light';
+  }
 }

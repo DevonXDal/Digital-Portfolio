@@ -2,17 +2,122 @@
 @tailwind components;
 @tailwind utilities;
 
+// Main Color Theme
+$color-theme: #80669d;
+$color-light: #fff8e4;
+$color-light-accent: #fffbf4;
+$color-light-text: #fbf3e6;
+$color-dark: #1e1c17;
+$color-dark-accent: #25221b;
+$color-dark-text: #362812;
+
+$color-mostly-white: #f9f9f9;
+$color-mostly-black: #060606;
+
+@mixin lightMode() {
+  --bgColor: #{$color-light};
+  --cardBgColor: #{$color-light-accent};
+  --textColor: #{$color-dark-text};
+
+  --ctaPrimary: #{$color-theme};
+  --ctaPrimaryText: #{$color-mostly-white};
+
+  --ctaSecondary: #3B454A;
+  --ctaSecondaryText: #{$color-mostly-white};
+
+  --ctaDisabled: #858585;
+  --ctaDisabledText: #{$color-mostly-black};
+
+  --ctaWarning: #C1583E;
+  --ctaWarningText: #{$color-mostly-black};
+
+  --ctaPositive: #0D7326;
+  --ctaPositiveText: #{$color-mostly-white};
+
+  --ctaNegative: #DD0808;
+  --ctaNegativeText: #{$color-mostly-white};
+}
+
+@mixin darkMode() {
+  --bgColor: #{$color-dark};
+  --cardBgColor: #{$color-dark-accent};
+  --textColor: #{$color-light-text};
+
+  --ctaPrimary: #{$color-theme};
+  --ctaPrimaryText: #{$color-mostly-white};
+
+  --ctaSecondary: #{$color-light-text};
+  --ctaSecondaryText: #{$color-mostly-black};
+
+  --ctaDisabled: #858585;
+  --ctaDisabledText: #{$color-mostly-black};
+
+  --ctaWarning: #C1583E;
+  --ctaWarningText: #{$color-mostly-black};
+
+  --ctaPositive: #0D7326;
+  --ctaPositiveText: #{$color-mostly-white};
+
+  --ctaNegative: #DD0808;
+  --ctaNegativeText: #{$color-mostly-white};
+}
+
+// Configure the body to use the light and dark mode
+#trueBody.light {
+  @include lightMode();
+}
+
+#trueBody.dark {
+  @include darkMode();
+}
+
+#trueBody {
+  background-color: var(--bgColor);
+  color: var(--textColor);
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
+/* Helpers for using the correct background and foreground color */
+.bg-theme {
+  background-color: var(--bgColor);
+}
+
+.fg-theme {
+  color: var(--textColor);
+}
+
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+  color: var(--ctaPrimary);
+}
+
+a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+  color: var(--textColor);
 }
 
 code {
   color: #e01a76;
 }
 
+.btn {
+  @apply rounded p-2;
+}
+
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  @extend .btn;
+  background-color: var(--ctaPrimary);
+  color: var(--ctaPrimaryText);
+}
+
+.flip-colors-on-hover:hover {
+  background-color: var(--textColor);
+  color: var(--bgColor);
 }

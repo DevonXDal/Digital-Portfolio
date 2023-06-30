@@ -1,45 +1,18 @@
-<header>
-  <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
-  >
-    <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">Portfolio</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target=".navbar-collapse"
-        aria-label="Toggle navigation"
-        [attr.aria-expanded]="isExpanded"
-        (click)="toggle()"
-      >
-        <span class="navbar-toggler-icon"></span>
+<nav class="p-2">
+  <div class="container mx-auto flex">
+    <a [routerLink]="['/']" class="flex-auto">Contact Me</a>
+    <div class="flex-auto relative group">
+      <button class="block h-6 w-32 ">
+        Learn More <i class="fa-solid fa-chevron-down"></i>
       </button>
-      <div
-        class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
-        [ngClass]="{ show: isExpanded }"
-      >
-        <ul class="navbar-nav flex-grow">
-          <li
-            class="nav-item"
-            [routerLinkActive]="['link-active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/counter']"
-              >Counter</a
-            >
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/fetch-data']"
-              >Fetch data</a
-            >
-          </li>
-        </ul>
-        <app-login-menu></app-login-menu>
+      <div class="invisible group-hover:visible w-48 shadow-xl absolute bg-theme">
+        <a [routerLink]="['/']" class="block px-4 py-2 flip-colors-on-hover">Resume</a>
+        <a [routerLink]="['/']" class="block px-4 py-2 flip-colors-on-hover">Transcript</a>
+        <a [routerLink]="['/']" class="block px-4 py-2 flip-colors-on-hover">Skills</a>
+        <a [routerLink]="['/']" class="block px-4 py-2 flip-colors-on-hover">Certifications</a>
+        <a [routerLink]="['/']" class="block px-4 py-2 flip-colors-on-hover">Other Credentials</a>
       </div>
     </div>
-  </nav>
-</header>
+  </div>
+
+</nav>
