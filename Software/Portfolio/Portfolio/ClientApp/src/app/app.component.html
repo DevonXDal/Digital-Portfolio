@@ -1,8 +1,12 @@
-<div [className]="theme" id="trueBody" style="min-height: 100vh;">
+<div [className]="theme" id="trueBody" style="min-height: 100vh">
   <app-nav-menu></app-nav-menu>
   <div class="container mx-auto">
-    <div class="w-full flex flex-col items-center">
-      <button class="btn-primary" (click)="toggleTheme()">{{(theme === 'light') ? 'Use Dark Mode' : 'Use Light Mode'}}</button>
+    <div class="w-full flex flex-col items-end">
+      <button class="btn-primary" (click)="toggleTheme()">
+        <i class="fa-solid fa-sun" *ngIf="theme === 'light'"></i>
+        <i class="fa-solid fa-moon" *ngIf="theme === 'dark'"></i>
+        Toggle Theme
+      </button>
     </div>
     
     <router-outlet></router-outlet>
