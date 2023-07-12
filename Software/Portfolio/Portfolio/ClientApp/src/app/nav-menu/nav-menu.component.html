@@ -1,7 +1,8 @@
 <nav class="p-6 mb-2">
   <div class="block lg:hidden">
     <button id="toggleNav" (click)="toggle()">
-      <i class="fa-solid fa-bars text-xl mb-2"></i>
+      <i class="fa-solid fa-bars text-xl mb-2" *ngIf="!isExpanded"></i>
+      <i class="fa-solid fa-x text-xl mb-2" *ngIf="isExpanded"></i>
     </button>
   </div>
   <!-- Intra-Site Links -->
