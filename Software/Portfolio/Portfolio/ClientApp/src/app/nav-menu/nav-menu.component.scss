@@ -4,6 +4,11 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+.unformatted-link {
+  color: var(--textColor);
+  text-decoration: none;
+}
+
 html {
   font-size: 14px;
 }

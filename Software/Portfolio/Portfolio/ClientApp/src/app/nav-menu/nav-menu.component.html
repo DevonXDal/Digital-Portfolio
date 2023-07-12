@@ -6,18 +6,18 @@
   </div>
   <!-- Intra-Site Links -->
   <div [ngClass]="{'hidden': !isExpanded}" class="block container mx-auto flex-grow lg:flex">
-    <a [routerLink]="['/']" class="flex-auto h-16 w-1/5" *ngIf="isExpanded"> 
+    <a [routerLink]="['/']" class="flex-auto h-16 " *ngIf="isExpanded"> 
       <button class="block h-16 underline mx-auto">
         Portfolio Summary
       </button>
     </a>
-    <a [routerLink]="['/']" class="flex-auto h-16 w-1/5"> 
+    <a [routerLink]="['/']" class="flex-auto h-16 w-1/5" style="text-align: center;"> 
       <button class="block h-16 underline mx-auto">
         Contact Me
       </button>
     </a>
-    <div class="flex-auto relative group">
-      <button class="block h-16 underline mx-auto">
+    <a class="flex-auto relative group w-1/5 unformatted-link">
+      <button class="block h-16 underline mx-auto w-48 lg:w-auto">
         Learn More <i class="fa-solid fa-chevron-down"></i>
       </button>
       <div class="invisible group-hover:visible w-48 shadow-xl absolute bg-theme ml-16 z-50">
@@ -27,11 +27,11 @@
         <a [routerLink]="['/']" class="block px-4 py-2 flip-colors-on-hover">Certifications</a>
         <a [routerLink]="['/']" class="block px-4 py-2 flip-colors-on-hover">Other Credentials</a>
       </div>
-    </div>
+    </a>
     <a [routerLink]="['/']" class="flex-auto h-16 w-1/5 items-center hover:mb-48 hover:delay-1000" *ngIf="!isExpanded" title="Return to Summary Page">
       <img src="/assets/img/personal-logo.webp" alt="Logo and Front Page Link" class="fill-current h-16 w-16 mx-auto hover:h-64 hover:w-64 hover:mb-8 hover:delay-1000">
     </a>
-    <div class="flex-auto relative group">
+    <a class="flex-auto relative group w-1/5 unformatted-link">
       <button class="block h-16 underline mx-auto">
         Other Content <i class="fa-solid fa-chevron-down"></i>
       </button>
@@ -39,15 +39,15 @@
         <a [routerLink]="['/']" class="block px-4 py-2 flip-colors-on-hover ">Integrated Projects</a>
         <a [routerLink]="['/']" class="block px-4 py-2 flip-colors-on-hover">Updates</a>
       </div>
-    </div>
-    <div class="flex-auto relative group">
+    </a>
+    <a class="flex-auto relative group w-1/5 unformatted-link">
       <button class="block h-16 underline mx-auto">
         Placeholder <i class="fa-solid fa-chevron-down"></i>
       </button>
       <div class="invisible group-hover:visible w-16 shadow-xl absolute bg-theme z-50">
         <a [routerLink]="['/']" class="block px-1 py-2 flip-colors-on-hover">N/A</a>
       </div>
-    </div>
+    </a>
   </div>
   <!-- Inter-Site Links -->
   <div [ngClass]="{'hidden': isExpanded}" id="interSiteLinks" class="container mx-auto flex">
