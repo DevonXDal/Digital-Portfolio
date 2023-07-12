@@ -16,6 +16,7 @@ $color-mostly-black: #060606;
 
 @mixin lightMode() {
   --bgColor: #{$color-light};
+  --altBgColor: #{$color-dark};
   --cardBgColor: #{$color-light-accent};
   --textColor: #{$color-dark-text};
   --mostlyWhite: #{$color-mostly-white};
@@ -42,6 +43,7 @@ $color-mostly-black: #060606;
 
 @mixin darkMode() {
   --bgColor: #{$color-dark};
+  --altBgColor: #{$color-light};
   --cardBgColor: #{$color-dark-accent};
   --textColor: #{$color-light-text};
   --mostlyWhite: #{$color-mostly-white};
@@ -78,14 +80,6 @@ $color-mostly-black: #060606;
 #trueBody {
   background-color: var(--bgColor);
   color: var(--textColor);
-}
-
-html {
-  height: 100%;
-}
-
-body {
-  min-height: 100%;
 }
 
 /* Helpers for using the correct background and foreground color */

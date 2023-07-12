@@ -1,0 +1,10 @@
+// Background color is flipped for the footer
+#footer {
+    background-color: var(--altBgColor);
+    color: var(--bgColor);
+    
+    a {
+        color: var(--ctaPrimary);
+        font-weight: bolder;
+    }
+}

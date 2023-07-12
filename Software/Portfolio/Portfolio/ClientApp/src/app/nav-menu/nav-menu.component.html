@@ -1,16 +1,26 @@
 <nav class="p-6 mb-2">
+  <div class="block lg:hidden">
+    <button id="toggleNav" (click)="toggle()">
+      <i class="fa-solid fa-bars text-xl mb-2"></i>
+    </button>
+  </div>
   <!-- Intra-Site Links -->
-  <div class="container mx-auto flex">
-    <a [routerLink]="['/']" class="flex-auto h-16 w-32"> 
-      <button class="block h-16 w-32 underline mx-auto">
-      Contact Me
+  <div [ngClass]="{'hidden': !isExpanded}" class="block container mx-auto flex-grow lg:flex">
+    <a [routerLink]="['/']" class="flex-auto h-16 w-1/5" *ngIf="isExpanded"> 
+      <button class="block h-16 underline mx-auto">
+        Portfolio Summary
+      </button>
+    </a>
+    <a [routerLink]="['/']" class="flex-auto h-16 w-1/5"> 
+      <button class="block h-16 underline mx-auto">
+        Contact Me
       </button>
     </a>
     <div class="flex-auto relative group">
-      <button class="block h-16 w-32 underline mx-auto">
+      <button class="block h-16 underline mx-auto">
         Learn More <i class="fa-solid fa-chevron-down"></i>
       </button>
-      <div class="invisible group-hover:visible w-48 shadow-xl absolute bg-theme ml-16">
+      <div class="invisible group-hover:visible w-48 shadow-xl absolute bg-theme ml-16 z-50">
         <a [routerLink]="['/']" class="block px-4 py-2 flip-colors-on-hover">Resume</a>
         <a [routerLink]="['/']" class="block px-4 py-2 flip-colors-on-hover">Transcript</a>
         <a [routerLink]="['/']" class="block px-4 py-2 flip-colors-on-hover">Skills</a>
@@ -18,43 +28,50 @@
         <a [routerLink]="['/']" class="block px-4 py-2 flip-colors-on-hover">Other Credentials</a>
       </div>
     </div>
-    <a [routerLink]="['/']" class="flex-auto h-16 w-32 items-center hover:mb-48 hover:delay-1000" title="Return to Summary Page">
+    <a [routerLink]="['/']" class="flex-auto h-16 w-1/5 items-center hover:mb-48 hover:delay-1000" *ngIf="!isExpanded" title="Return to Summary Page">
       <img src="/assets/img/personal-logo.webp" alt="Logo and Front Page Link" class="fill-current h-16 w-16 mx-auto hover:h-64 hover:w-64 hover:mb-8 hover:delay-1000">
     </a>
     <div class="flex-auto relative group">
-      <button class="block h-16 w-32 underline mx-auto">
+      <button class="block h-16 underline mx-auto">
         Other Content <i class="fa-solid fa-chevron-down"></i>
       </button>
-      <div class="invisible group-hover:visible w-48 shadow-xl absolute bg-theme ml-16">
+      <div class="invisible group-hover:visible w-48 shadow-xl absolute bg-theme ml-16 z-50">
         <a [routerLink]="['/']" class="block px-4 py-2 flip-colors-on-hover ">Integrated Projects</a>
         <a [routerLink]="['/']" class="block px-4 py-2 flip-colors-on-hover">Updates</a>
       </div>
     </div>
     <div class="flex-auto relative group">
-      <button class="block h-16 w-32 underline mx-auto">
+      <button class="block h-16 underline mx-auto">
         Placeholder <i class="fa-solid fa-chevron-down"></i>
       </button>
-      <div class="invisible group-hover:visible w-48 shadow-xl absolute bg-theme ml-16">
-        <a [routerLink]="['/']" class="block px-4 py-2 flip-colors-on-hover">N/A</a>
+      <div class="invisible group-hover:visible w-16 shadow-xl absolute bg-theme z-50">
+        <a [routerLink]="['/']" class="block px-1 py-2 flip-colors-on-hover">N/A</a>
       </div>
     </div>
   </div>
   <!-- Inter-Site Links -->
-  <div class="container mx-auto flex">
-    <a href="https://github.com/DevonXDal/previous-major-projects" class="flex-auto h-24 w-96" target="_blank"> 
-      <button class="block h-24 w-96 mx-auto text-2xl font-medium">
+  <div [ngClass]="{'hidden': isExpanded}" id="interSiteLinks" class="container mx-auto flex">
+    <a href="https://github.com/DevonXDal/previous-major-projects" class="flex-auto h-24 w:1/3" target="_blank"> 
+      <button class="block h-24 w:1/3 mx-auto lg:text-2xl font-medium">
         <i class="fa-brands fa-github mr-1"></i>View Previous Projects
       </button>
     </a>
-    <a href="https://github.com/DevonXDal/Digital-Portfolio" class="flex-auto h-24 w-96" target="_blank"> 
-      <button class="block h-24 w-96 mx-auto text-2xl font-medium">
+    <a href="https://github.com/DevonXDal/Digital-Portfolio" class="flex-auto :h-24 w:1/3" target="_blank"> 
+      <button class="block h-24 w:1/36 mx-auto lg:text-2xl font-medium">
       View the Source Code
       </button>
     </a>
-    <a href="https://www.linkedin.com/in/devon-dalrymple-19246a182/" class="flex-auto h-24 w-96" target="_blank"> 
-      <button class="block h-24 w-96 mx-auto text-2xl font-medium">
+    <a href="https://www.linkedin.com/in/devon-dalrymple-19246a182/" class="flex-auto h-24 w:1/3" target="_blank"> 
+      <button class="block h-24 w:1/3 mx-auto lg:text-2xl font-medium">
       View LinkedIn Page <i class="fa-brands fa-linkedin ml-1"></i>
       </button>
     </a>
   </div>
 </nav>
+
+<script>
+  document.getElementById('toggleNav').onclick = function(){
+    document.getElementById("intraSiteLinks").classList.toggle("hidden");
+    document.getElementById("interSiteLinks").classList.toggle("hidden");
+  }
+</script>

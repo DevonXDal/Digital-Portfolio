@@ -6,12 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-menu.component.scss']
 })
 export class NavMenuComponent {
-  isExpanded = false;
+  public isExpanded = false;
 
-  collapse() {
-    this.isExpanded = false;
-  }
-
+  /// Toggles whether the navbar is expanded or not on mobile devices
   toggle() {
     this.isExpanded = !this.isExpanded;
   }
