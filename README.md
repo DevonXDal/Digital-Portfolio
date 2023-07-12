@@ -36,7 +36,7 @@ This is a digital portfolio meant to show off my current skills along with how m
 - Angular (v15) [Learn More](https://angular.io/)
 - TypeScript [Learn More](https://www.typescriptlang.org/)
 - Node (v18) [Learn More](https://nodejs.org/en/)
-- TailwindCSS [Learn More](https://bulma.io/) <= With SASS files
+- TailwindCSS [Learn More](https://bulma.io/) <= With SCSS files
 - PrimeNG [Learn More](https://www.primefaces.org/primeng/)
 - FontAwesome [Learn More](https://fontawesome.com/)
 
