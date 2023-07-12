@@ -27,6 +27,8 @@
     "jquery": "^3.6.0",
     "oidc-client": "^1.11.5",
     "popper.js": "^1.16.0",
+    "primeng": "14.0.0",
+    "primeicons": "6.0.1",
     "run-script-os": "^1.1.6",
     "rxjs": "~7.5.5",
     "zone.js": "~0.11.6"

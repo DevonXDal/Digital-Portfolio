@@ -18,6 +18,8 @@ import { LearnMoreModule } from './learn-more/learn-more.module';
 import { OtherContentModule } from './other-content/other-content.module';
 import { SharedModule } from './shared/shared.module';
 
+import { TabViewModule } from "primeng/tabview";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +47,7 @@ import { SharedModule } from './shared/shared.module';
     }),
     LearnMoreModule,
     OtherContentModule,
+    TabViewModule,
     SharedModule,
   ],
   providers: [

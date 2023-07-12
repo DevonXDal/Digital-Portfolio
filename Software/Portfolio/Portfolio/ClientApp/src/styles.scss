@@ -121,3 +121,16 @@ code {
   background-color: var(--textColor);
   color: var(--bgColor);
 }
+
+// Created by using the generator here: https://underline-generator.netlify.app/?ref=undesign
+.fancy-underline {
+  background-image: linear-gradient(120deg, #77A1D3,#79CBCA,#E684AE 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.2em;
+  background-position: 0 80%;
+  transition: background-size 0.25s ease-in;
+}
+
+.fancy-underline:hover {
+  background-size: 100% 88% !important;
+}
