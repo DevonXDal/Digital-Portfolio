@@ -18,6 +18,8 @@ $color-mostly-black: #060606;
   --bgColor: #{$color-light};
   --cardBgColor: #{$color-light-accent};
   --textColor: #{$color-dark-text};
+  --mostlyWhite: #{$color-mostly-white};
+  --mostlyBlack: #{$color-mostly-black};
 
   --ctaPrimary: #{$color-theme};
   --ctaPrimaryText: #{$color-mostly-white};
@@ -42,6 +44,8 @@ $color-mostly-black: #060606;
   --bgColor: #{$color-dark};
   --cardBgColor: #{$color-dark-accent};
   --textColor: #{$color-light-text};
+  --mostlyWhite: #{$color-mostly-white};
+  --mostlyBlack: #{$color-mostly-black};
 
   --ctaPrimary: #{$color-theme};
   --ctaPrimaryText: #{$color-mostly-white};
@@ -122,15 +126,26 @@ code {
   color: var(--bgColor);
 }
 
-// Created by using the generator here: https://underline-generator.netlify.app/?ref=undesign
+// Baseline gradient created by using the generator here: https://underline-generator.netlify.app/?ref=undesign
 .fancy-underline {
-  background-image: linear-gradient(120deg, #77A1D3,#79CBCA,#E684AE 100%);
+  background-image: linear-gradient(120deg, #82afe6,#8beae8,#f68fbc 100%);
   background-repeat: no-repeat;
-  background-size: 100% 0.2em;
+  background-size: 100% 0.15em;
   background-position: 0 80%;
   transition: background-size 0.25s ease-in;
+
+  &:hover {
+    background-size: 100% 88% !important;
+    color: $color-mostly-black;
+  }
+
+  // Better usability and mobile friendly
+  &:active::after {
+    content: " " attr(title) " ";
+    font-style: italic;
+  }
 }
 
-.fancy-underline:hover {
-  background-size: 100% 88% !important;
-}
+
+
+

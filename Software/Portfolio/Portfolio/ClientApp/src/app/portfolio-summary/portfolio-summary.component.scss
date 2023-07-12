@@ -1,0 +1,18 @@
+:host ::ng-deep .p-tabview {
+    .p-tabview-nav-content .p-tabview-nav {
+        background-color: var(--cardBgColor);
+
+        * .p-tabview-nav-link {
+            background-color: var(--cardBgColor);
+        }  
+
+        .p-highlight .p-tabview-nav-link .p-tabview-title {
+            color: var(--themeColor);
+        }
+    }
+
+    .p-tabview-panels {
+        background-color: var(--cardBgColor);
+        color: var(--textColor);
+    }
+}
