@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TranscriptComponent implements OnInit {
 
+  public transcriptPath = '/assets/documents/Transcript_Dalrymple.pdf';
+
   constructor() { }
 
   ngOnInit(): void {

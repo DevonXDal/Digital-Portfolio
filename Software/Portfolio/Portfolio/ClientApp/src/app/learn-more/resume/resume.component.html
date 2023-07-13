@@ -1,1 +1,10 @@
-<p>resume works!</p>
+<div class="container mx-auto items-center flex flex-col">
+    <h1 class="page-title">Resume</h1>
+    <!-- https://help.viostream.com/frequently-asked-questions/how-do-i-make-an-iframe-embed-responsive/ - Source for the base version of the html below -->
+    <div class="mb-4" style="padding-bottom:56.25%; position:relative; display:block; width: 100%">
+        <iframe src="/assets/documents/Resume_Dalrymple.pdf" frameborder="0" width="100%" height="100%" style="position:absolute; top:0; left: 0">
+            This iframe could not be displayed properly. Please consider downloading the resume using the button below.
+        </iframe>  
+    </div>
+    <a [href]="resumePath" class="btn-primary self-center mb-96" download>Download <i class="fa-solid fa-download"></i></a>
+</div>
