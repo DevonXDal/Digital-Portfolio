@@ -9,6 +9,17 @@ a.navbar-brand {
   text-decoration: none;
 }
 
+// Active link will have its button, image, or itself if it is a menu item be surronded with a dashed outline in the theme color.
+.active-link {
+
+  &.menu-item, button, img {
+    outline-style: dashed;
+    outline-color: var(--ctaPrimary); // Locks it into the theme color
+    outline-width: .2em;
+  }
+  
+}
+
 html {
   font-size: 14px;
 }

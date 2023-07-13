@@ -36,6 +36,7 @@ import { TabViewModule } from "primeng/tabview";
     ApiAuthorizationModule,
     RouterModule.forRoot([
       { path: '', component: PortfolioSummaryComponent, pathMatch: 'full' },
+      { path: 'contact', component: ContactMeComponent },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
     ]),
