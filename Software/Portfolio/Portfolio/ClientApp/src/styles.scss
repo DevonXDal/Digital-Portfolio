@@ -101,6 +101,11 @@ a:hover, a:visited, a:link, a:active {
   color: var(--textColor);
 }
 
+a.normal-link {
+  text-decoration: underline;
+  color: var(--ctaPrimary);
+}
+
 code {
   color: #e01a76;
 }
@@ -154,6 +159,7 @@ code {
   background-color: var(--mostlyWhite);
   @apply rounded;
 }
+
 
 
 

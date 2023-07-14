@@ -1,0 +1,13 @@
+<div class="w-full my-4 card">
+    <h3 class="text-2xl font-bold text-center my-2">{{showcaseName}} <span style="color: var(--ctaNegative);" *ngIf="hasExpired">EXPIRED</span></h3>
+    <img [src]="showcaseImgPath" alt="Image Showing {{showcaseName}}" *ngIf="showcaseImgPath != 'MISSING'" class="w-full h-auto my-1">
+    <p-accordion class="w-full h-auto">
+        <p-accordionTab header="Description">
+           {{description}}
+        </p-accordionTab>
+        <p-accordionTab header="Verify" *ngIf="hasVerification">
+            <div *ngIf="verificationLink">Verify at: <a [href]="verificationLink" class="normal-link" target="_blank">LINK</a></div>
+            <div *ngIf="verificationCode">Verification Code: <span style="color: var(--ctaPrimary);">{{verificationCode}}</span></div>
+        </p-accordionTab>
+    </p-accordion>
+</div>

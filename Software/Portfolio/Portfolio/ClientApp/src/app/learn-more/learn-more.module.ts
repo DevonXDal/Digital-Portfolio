@@ -7,6 +7,7 @@ import { OtherCredentialsListComponent } from './other-credentials-list/other-cr
 import { RouterModule } from '@angular/router';
 import { SkillsComponent } from './skills/skills.component';
 import { ChartModule } from 'primeng/chart';
+import { SharedModule } from '../shared/shared.module';
 
 let base = 'learn-more';
 
@@ -19,7 +20,7 @@ let base = 'learn-more';
     SkillsComponent
   ],
   imports: [
-    CommonModule,
+    SharedModule,
     RouterModule.forChild([
       { path: `${base}`, redirectTo: `${base}/resume`, pathMatch: 'full' },
       { path: `${base}/resume`, component: ResumeComponent, pathMatch: 'full' },
