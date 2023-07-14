@@ -1,5 +1,6 @@
 import { style } from '@angular/animations';
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'app';
-  public uiMode: 'light' | 'dark' = 'light';
+  public env = environment;
 
   constructor() {}
 
@@ -20,18 +20,18 @@ export class AppComponent implements OnInit {
       // Sees if the user has selected a theme, if they haven't, check if dark mode preference is set on their browser, 
       // finally default to light mode.
       if (savedUiMode && (savedUiMode === 'light' || savedUiMode === 'dark')) {
-        this.uiMode = savedUiMode!;
+        this.env.uiMode = savedUiMode!;
       } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark").matches) {
-        this.uiMode = 'dark';
+        this.env.uiMode = 'dark';
       } else {
-        this.uiMode = 'light';
+        this.env.uiMode = 'light';
       }
   }
 
   /// Toggles between light and dark mode theme and saves the current option
   toggleTheme() {
-    this.uiMode = (this.uiMode === 'light') ? 'dark' : 'light';
+    this.env.uiMode = (this.env.uiMode === 'light') ? 'dark' : 'light';
 
-    localStorage.setItem('preferred-theme', this.uiMode); // May throw error to console if storage is disabled
+    localStorage.setItem('preferred-theme', this.env.uiMode); // May throw error to console if storage is disabled
   }
 }

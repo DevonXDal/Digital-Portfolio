@@ -150,5 +150,10 @@ code {
   @apply text-4xl mb-12 font-bold;
 }
 
+.chart-div {
+  background-color: var(--mostlyWhite);
+  @apply rounded;
+}
+
 
 

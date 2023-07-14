@@ -5,6 +5,8 @@ import { TranscriptComponent } from './transcript/transcript.component';
 import { CertificationListComponent } from './certification-list/certification-list.component';
 import { OtherCredentialsListComponent } from './other-credentials-list/other-credentials-list.component';
 import { RouterModule } from '@angular/router';
+import { SkillsComponent } from './skills/skills.component';
+import { ChartModule } from 'primeng/chart';
 
 let base = 'learn-more';
 
@@ -13,7 +15,8 @@ let base = 'learn-more';
     ResumeComponent,
     TranscriptComponent,
     CertificationListComponent,
-    OtherCredentialsListComponent
+    OtherCredentialsListComponent,
+    SkillsComponent
   ],
   imports: [
     CommonModule,
@@ -21,10 +24,11 @@ let base = 'learn-more';
       { path: `${base}`, redirectTo: `${base}/resume`, pathMatch: 'full' },
       { path: `${base}/resume`, component: ResumeComponent, pathMatch: 'full' },
       { path: `${base}/transcript`, component: TranscriptComponent },
-      { path: `${base}/skills`, component: ResumeComponent },
+      { path: `${base}/skills`, component: SkillsComponent },
       { path: `${base}/certifications`, component: CertificationListComponent },
       { path: `${base}/other-credentials`, component: OtherCredentialsListComponent },
     ]),
+    ChartModule
   ]
 })
 export class LearnMoreModule { }

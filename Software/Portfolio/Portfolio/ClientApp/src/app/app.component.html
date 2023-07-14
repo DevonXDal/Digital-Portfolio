@@ -1,10 +1,10 @@
-<div [className]="uiMode" id="trueBody" style="min-height: 100vh">
+<div [className]="env.uiMode" id="trueBody" style="min-height: 100vh">
   <app-nav-menu></app-nav-menu>
   <div class="container mx-auto">
     <div class="w-full flex flex-col items-end">
       <button class="btn-primary flex" (click)="toggleTheme()">
-        <i class="fa-solid fa-sun flex-item self-center text-2xl lg:text-base" *ngIf="uiMode === 'light'"></i>
-        <i class="fa-solid fa-moon flex-item self-center text-2xl lg:text-base" *ngIf="uiMode === 'dark'"></i>
+        <i class="fa-solid fa-sun flex-item self-center text-2xl lg:text-base" *ngIf="env.uiMode === 'light'"></i>
+        <i class="fa-solid fa-moon flex-item self-center text-2xl lg:text-base" *ngIf="env.uiMode === 'dark'"></i>
         <span class="hidden lg:inline flex-item ml-1">Toggle Theme</span>
       </button>
     </div>

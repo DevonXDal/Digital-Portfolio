@@ -1,0 +1,37 @@
+<div class="container mx-auto items-center flex flex-col">
+    <h1 class="page-title">Technical Skills</h1>
+    <h3 class="text-2xl mt-3 font-semibold" style="color: var(--ctaPrimary);">Projects Reviewed</h3>
+    <span class="text-3xl mb-3 font-bold" style="color: var(--ctaPrimary);">14</span>
+    <div class="flex flex-col lg:flex-row justify-evenly gap-12 lg:gap-24">
+        <div class="flex-item card">
+            <div class="text-center font-bold"># of Times a Programming Language was Used for a Project</div>
+            <div class="chart-div">
+                <p-chart type="polarArea" 
+                        [data]="languagesPolarAreaChartData" 
+                        [options]="polarAreaChartchartOptions" 
+                        [style]="{'width': '60%'}">
+                </p-chart>
+            </div>
+        </div>
+        <div class="flex-item card">
+            <div class="text-center font-bold"># of Times a Tool was Used for a Project</div>
+            <div class="chart-div">
+                <p-chart type="polarArea" 
+                    [data]="toolsPolarAreaChartData" 
+                    [options]="polarAreaChartchartOptions" 
+                    [style]="{'width': '60%'}">
+                </p-chart>
+            </div>
+        </div>
+        <div class="flex-item card">
+            <div class="text-center font-bold"># of Times a Language Framework was Used for a Project</div>
+            <div class="chart-div">
+                <p-chart type="polarArea" 
+                    [data]="frameworksPolarAreaChartData" 
+                    [options]="polarAreaChartchartOptions" 
+                    [style]="{'width': '60%'}">
+                </p-chart>
+            </div>
+        </div>
+    </div>
+</div>
