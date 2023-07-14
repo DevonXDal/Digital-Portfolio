@@ -80,6 +80,7 @@ $color-mostly-black: #060606;
 #trueBody {
   background-color: var(--bgColor);
   color: var(--textColor);
+  font-family: 'Imprima';
 }
 
 /* Helpers for using the correct background and foreground color */
@@ -111,6 +112,7 @@ code {
 }
 
 .btn {
+  @extend .middle-font;
   @apply rounded p-2;
 }
 
@@ -152,6 +154,7 @@ code {
 }
 
 .page-title {
+  font-family: 'Archivo Black', sans-serif;
   @apply text-4xl mb-12 font-bold;
 }
 
@@ -160,6 +163,11 @@ code {
   @apply rounded;
 }
 
+.middle-font {
+  font-family: 'Hind Guntur', sans-serif;
+}
 
-
+.top-font {
+  font-family: 'Archivo Black', sans-serif;
+}
 
