@@ -1,1 +1,41 @@
-<p>contact-me works!</p>
+<div class="container mx-auto items-center flex flex-col">
+    <h1 class="page-title">Contact Info</h1>
+
+    <img class="mx-auto lg:w-1/2 w-2/3 h-auto" src="/assets/img/WoodCountyWV.webp" alt="Image showing Wood County on a map of West Virginia.">
+    <div class="w-full flex flex-row middle-font text-lg lg:text-2xl gap-8 justify-center mb-8">
+        <div class="text-right flex flex-col">
+            <div>Home Address:</div>
+            <div class="my-2">Phone (Mobile):</div>
+            <div>Email Address:</div>
+        </div>
+        <div class="text-left flex flex-col">
+            <div>367 Kittle Street, Williamstown, West Virginia 26187</div>
+            <div class="my-2">(304) 210-8472 <span class="underline">(Please Leave a Voicemail)</span></div>
+            <div>devonxbusiness@gmail.com</div>
+        </div>
+    </div>
+
+    <div class="card flex-col flex">
+        <h2 class="mx-auto text-center text-2xl mb-8 middle-font">Contact Me</h2>
+
+        <form #contactMeForm (ngSubmit)="sendEmail(contactMeForm)">
+            <div class="flex flex-row m-2 justify-center">
+                <div class="flex flex-col gap-8 text-xl w-1/3 lg:w-1/4">
+                        <label for="nameField">Name:</label>
+                        <label for="emailField">Email:</label>
+                        <label for="phoneField">Phone Number (Optional):</label>
+                        <label for="messageField">Message:</label>
+                </div>
+                <div class="flex flex-col gap-8 w-2/3  lg:w-2/4">
+                        <input id="nameField" name="Name" type="text">
+                        <input id="emailField" name="Email" type="email">
+                        <input id="phoneField" name="Phone" type="phone">
+                        <textarea id="messageField" name="Message" rows="5" cols="30"></textarea>
+                </div>
+            </div>
+            
+        </form>
+        
+        <button class="btn-primary text-xl mx-auto">Send Message</button>
+    </div>
+</div>

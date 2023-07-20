@@ -171,3 +171,8 @@ code {
   font-family: 'Archivo Black', sans-serif;
 }
 
+input, textarea {
+  color: var(--mostlyBlack);
+  @apply outline rounded outline-2;
+}
+

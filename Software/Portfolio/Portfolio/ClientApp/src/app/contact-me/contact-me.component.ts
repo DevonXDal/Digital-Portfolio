@@ -12,4 +12,8 @@ export class ContactMeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  sendEmail(contactForm: HTMLFormElement): void {
+
+  }
+
 }
