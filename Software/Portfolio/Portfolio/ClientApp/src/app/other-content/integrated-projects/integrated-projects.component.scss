@@ -1,0 +1,6 @@
+.dock-window {
+    @apply w-full h-screen bg-white mb-8 flex flex-col justify-center;
+
+    background-image: url(/assets/img/DockBackground.png);
+    background-size: cover;
+}

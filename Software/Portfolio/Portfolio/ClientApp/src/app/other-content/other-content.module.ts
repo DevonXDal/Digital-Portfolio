@@ -4,6 +4,8 @@ import { IntegratedProjectsComponent } from './integrated-projects/integrated-pr
 import { UpdateListComponent } from './update-list/update-list.component';
 import { RouterModule } from '@angular/router';
 import { PreviousProjectsComponent } from './previous-projects/previous-projects.component';
+import {DockModule} from 'primeng/dock';
+import {MenubarModule} from 'primeng/menubar';
 
 let base = 'other-content';
 
@@ -21,6 +23,8 @@ let base = 'other-content';
       { path: `${base}/previous-projects`, component: PreviousProjectsComponent},
       { path: `${base}/updates`, component: UpdateListComponent },
     ]),
+    DockModule,
+    MenubarModule
   ]
 })
 export class OtherContentModule { }

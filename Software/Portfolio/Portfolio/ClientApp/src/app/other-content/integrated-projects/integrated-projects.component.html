@@ -1,1 +1,23 @@
-<p>integrated-projects works!</p>
+<!-- Integrated DevonOS -->
+<div class="mt-8">&nbsp;</div>
+<p-menubar [model]="menubarItems">
+    <ng-template pTemplate="start">
+        <i class="fa-solid fa-puzzle-piece"></i>
+    </ng-template>
+    <ng-template pTemplate="end">
+        <span>{{ currentTimestamp | date:'EEEE, MMM d, y, h:mm'}}</span>
+    </ng-template>
+</p-menubar>
+<!-- Desktop Background from: https://pixabay.com/vectors/triangles-polygon-geometric-texture-1430105/ -->
+<div class="dock-window">
+    <p-dock [model]="dockItems" position="bottom" class="relative">
+        <ng-template pTemplate="item" let-item>
+            <img [src]="item.icon" [alt]="item.label" width="100%">
+        </ng-template>
+    </p-dock>
+</div>
+
+
+<!-- Descriptions -->
+<div class="container mx-auto items-center flex flex-col">
+</div>
