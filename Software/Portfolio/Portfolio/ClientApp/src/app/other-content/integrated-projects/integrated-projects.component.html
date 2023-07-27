@@ -21,6 +21,91 @@
 
 
 <!-- Descriptions -->
-<div class="container mx-auto items-center flex flex-col text-justify">
+<div class="container mx-auto flex flex-col">
+    <!-- Chesshogi -->
     <h3 class="text-2xl text-center">Chesshogi - <span style="color: var(--ctaPrimary);">Planned</span></h3>
+    <p class="indent-8">
+        One of the things I've been wanting to do is create my own board game.
+        I've also wanted an experience that was like Shogi (Chess-like Japanese board game) that friends and family would want to play while still keeping a similar experience to typical Chess.
+        The name Chesshogi is meant to represent a child board game that takes elements from both Chess and Shogi, while also having some new mechanics tied in.
+        <span class="font-bold italic">This part of the code relating to Chesshogi and its rules will have another root level license that applies to it, alone, when it is added.</span>
+        Additional rules, piece designs, game notation, etc., will be included here once work on adding the game begins.
+    </p>
+    <p class="indent-8">
+        Two notable differences from Chess include the lack of castling of both king-side and queen-side, and the lack of a Queen piece.
+        The piece known as the King in Chess is instead called the Monarch and has the added ability to move two spaces forward (towards the enemy's home row).
+        The queen is replaced with the pike which lacks the ability to attack/capture a single square in any direction, having to instead move at least two spaces to attack a piece.
+        Chesshogi pawns are slightly more powerful as they may also move one or two spaces forward and are able to carry out <span class="italic">en-passant</span>.
+    </p>
+    <p class="indent-8">
+        Like Shogi, there is a way to return pieces back to the board, although there are different restrictions as to how this can be done.
+        A returning piece is the gold general, although in Chesshogi it is referred to as the royal guard.
+        Unlike Shogi and like Chess, only the pawn can promote and it must reach your opponent's home row to do so.
+        Due to the lack of king-side and queen-side castling that Chess has, castling is more dynamic and similar to how Shogi does it.
+    </p>
+    <p class="indent-8">
+        Chesshogi is built to fix some problems I've seen with both Chess and Shogi.
+        One is that the pieces and board are designed such that blind players can play with physical boards by making use of braille.
+        Another is the first player's slight advantage over the second player.
+        In Chess this advantage that the white player has is estimated at half a pawn in material.
+        Although this may change with future playtesting, the second player is given two pawns from the start of the game that they may play from their supply pile when the criteria for recruitment is met.
+        A notable issue with Chess is how repetitive the openings of the game can feel as many openings have extensive theories and counter-theories on how to play them.
+        In Chess each player has 20 opening moves that each player can do their first turn.
+        In Chesshogi each player has 31 possible opening moves. 
+        The number of opening states of the board after each player has made their first move in Chess is 400.
+        This number is currently 961 for Chesshogi.
+        A nitpick that I have with Chess is that pawns can promote to knights, rooks, bishops, and queens.
+        The problem is that there is no good reason to ever promote to a rook or bishop.
+        In Chesshogi the choice between getting a knight, bishop, rook, jester, crossbow, pike, or royal guard has a much more significant impact.
+        Each piece has something that the others do not in this choice, making promotions much more interesting and situationally chosen.
+        The current designs for Chesshogi pieces make it so the pieces are harder to knock down then Chess pieces, and so that they provide information on their moves and rules.
+        This inclusion of information on the pieces make the game more beginner friendly without sacrificing any of the strategy.
+        The pieces do not use color to indicate who controls them, this is done for recruitment and training moves along with pieces included with the board for piece promotions specifically.
+    </p>
+    <p class="indent-8">
+        For the supply pile and manpower mechanics, they are a deviation from Shogi's playing of captured pieces.
+        The idea is that pawns are always captured, they are an unloyal piece that is unwilling to die for the cause.
+        These pawns are added to the manpower pool and can be converted and recruited to the other side.
+        Non-pawn pieces are always loyal. When a piece "captures" a non-pawn, non-monarch piece, the "captured" piece is killed.
+        What is left is the equipment, or supplies, if you will, that the dead piece was using. 
+        These supplies are added to the supply pile and can be used to train pawns into other, more loyal, pieces.
+    </p>
+
+    <!-- Labyrinth of Devon -->
+    <h3 class="text-2xl text-center mt-10">Labyrinth of Devon 3.0 - <span style="color: var(--ctaPrimary);">Planned</span></h3>
+    <p class="indent-8">
+        A fun little side project I have planned is the creation of the third version of the Labyrinth of Devon.
+        This was my interpretation of the World of Zuul project that was done for my first two programming classes.
+        It is a mostly text-based dungeon crawler with some supporting GUI elements built using Java AWT and Swing.
+        It had a psuedo-random generation system for the floor layouts, room locations, monsters, items, and combat damage.
+        The goal here is to give myself 40 full hours to develop a third version for it, that runs on the web instead of using AWT and Swing.
+        Whatever I get done and working within 40 hours will be displayed on this page.
+        A few goals include adding some images, improving randomization, adding lore, making class choices work correctly, including magic and alternative attacks, along with five to ten floors with at least one boss fight.
+    </p>
+    <p class="indent-8">
+        Version 1 of Labyrinth of Devon had only a console and lacked any GUI features.
+        Version 2 added a couple of features, slightly improved the codebase, and added basic GUI features.
+        Neither version had well-written code, but if you are interested in seeing an earlier version, there is one on the <a href="https://github.com/DevonXDal/previous-major-projects" target="_blank" class="normal-link">Previous Projects</a> GitHub repo.
+    </p>
+
+    <!-- Script to Dart Transpiler -->
+    <h3 class="text-2xl text-center mt-10">Script to Dart Transpiler - <span style="color: var(--ctaPrimary);">Planned</span></h3>
+    <p class="indent-8">
+        My senior capstone project was quite ambitious. 
+        The goal was a site that could produce variations from a school messanger app template based on user-configured settings and build tailored apps.
+        The apps to be produced were meant to be very customizable to a point not really provided by most of the competition.
+        This project was referred to as EASYNU or Extensible App for the School Year's News and Updates.
+        This project called for a flutter project that would serve as a template, a website for school and school district administrators to design their custom version of the school messanger app and run the build process, and an extension transpiler.
+        The extension transpiler was meant to allow users to build extensions that could be inserted into their app without having to pay for a chance of these features being custom built for their needs.
+        This transpiler made use of a simplified script meant to be relatively easy to learn and was made to be used on the site.
+        Due to the project's overambitiousness, the extension transpiler was never fully realized, but its original version was close to being finished.
+        I believe that in the span of one or two weeks of free time, I could have it added as an integrated project to play around with and showcase on this site. 
+    </p>
+    <p class="indent-8">
+        This project led me to learn about context free grammars, nondeterminate finite automatons, lexical/syntactical/semantic analyses, and other relatively advanced topics.
+        It also forced me to learn to use PlantUML to be able to diagram the complex tranpiler steps, leading to a sequence diagram of the transpilation that was ~70 messages long.
+        <a class="normal-link" href="assets/img/ExtensionTranspilerSequenceDiagram.webp" target="_blank">Do you wish to see it?</a>
+        I also did an extensive all-in-one-image activity diagram for the transpiler.
+        <a class="normal-link" href="assets/img/ExtensionTranspilerActivityDiagram.webp" target="_blank">Do you wish to see that?</a>
+    </p>
 </div>
