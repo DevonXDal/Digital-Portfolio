@@ -1,7 +1,14 @@
 <div [className]="env.uiMode" id="trueBody" style="min-height: 100vh">
   <app-nav-menu></app-nav-menu>
   <div class="container mx-auto">
-    <div class="w-full flex flex-col items-end">
+    <div class="w-full flex flex-row justify-between">
+      <a [routerLink]="['/']" *ngIf="shouldShowSummaryReturnLink">
+        <button class="btn btn-primary flex">
+          <i class="fa-solid fa-arrow-left-long flex-item text-2xl lg:text-base"></i>
+          <span class="flex-item hidden lg:inline ml-1">Back to Summary</span>
+        </button>
+      </a>
+      <div *ngIf="!shouldShowSummaryReturnLink">&nbsp;</div>
       <button class="btn-primary flex" (click)="toggleTheme()">
         <i class="fa-solid fa-sun flex-item self-center text-2xl lg:text-base" *ngIf="env.uiMode === 'light'"></i>
         <i class="fa-solid fa-moon flex-item self-center text-2xl lg:text-base" *ngIf="env.uiMode === 'dark'"></i>

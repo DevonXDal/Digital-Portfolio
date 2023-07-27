@@ -1,5 +1,7 @@
 import { style } from '@angular/animations';
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { NavigationEnd, Router, RouterEvent } from '@angular/router';
+import { filter } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -9,12 +11,18 @@ import { environment } from 'src/environments/environment';
 })
 export class AppComponent implements OnInit {
   public env = environment;
+  public shouldShowSummaryReturnLink = false;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   /// Prepares the application by determining whether to use light mode or dark mode.
   ngOnInit(): void {
       let savedUiMode: string | null = localStorage.getItem('preferred-theme');
+      this.router.events.subscribe((event) => {
+        if (event instanceof NavigationEnd) {
+          this.shouldShowSummaryReturnLink = !(this.router.url === '/');
+        }
+      })
 
       // Help from Medium article: https://pkief.medium.com/automatic-dark-mode-detection-in-angular-material-8342917885a0
       // Sees if the user has selected a theme, if they haven't, check if dark mode preference is set on their browser, 
