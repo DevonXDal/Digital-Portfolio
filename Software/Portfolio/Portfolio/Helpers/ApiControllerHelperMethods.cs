@@ -10,7 +10,7 @@ namespace Portfolio.Helpers
     /// 
     /// Author: Devon X. Dalrymple
     /// </summary>
-    public class ApiControllerHelperMethods
+    public static class ApiControllerHelperMethods
     {
         /// <summary>
         /// Creates a content result with an object that is serialized to json, having all names set to

@@ -50,8 +50,7 @@ public class Startup
         });
         services.AddDatabaseDeveloperPageExceptionFilter();
 
-        services.AddDefaultIdentity<ApplicationUser>()
-            .AddEntityFrameworkStores<ApplicationDbContext>();
+        services.AddDefaultIdentity<ApplicationUser>();
 
         services.Configure<IdentityOptions>(options =>
         {
@@ -62,12 +61,6 @@ public class Startup
             // For more information, visit https://aka.ms/aspaccountconf.
             options.SignIn.RequireConfirmedAccount = false;
         });
-
-        services.AddIdentityServer()
-            .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
-
-        services.AddAuthentication()
-            .AddIdentityServerJwt();
 
         services.AddControllersWithViews().AddNewtonsoftJson(options =>
         {
@@ -130,7 +123,6 @@ public class Startup
         app.UseRouting();
 
         app.UseAuthentication();
-        app.UseIdentityServer();
         app.UseAuthorization();
 
         app.UseEndpoints(endpoints =>

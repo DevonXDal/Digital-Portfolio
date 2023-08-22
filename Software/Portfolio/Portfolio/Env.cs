@@ -31,7 +31,7 @@
 
         public Env(IConfiguration config) 
         {
-            _config = config; 
+            _config = config;
         }
     }
 }

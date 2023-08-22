@@ -43,6 +43,7 @@ This is a digital portfolio meant to show off my current skills along with how m
 ### Back-End
 - ASP.NET 6 [Learn More](https://dotnet.microsoft.com/en-us/)
 - EF Core [Learn More](https://learn.microsoft.com/en-us/ef/core/)
+- OpenIddict [Learn More](https://github.com/openiddict/openiddict-core)
 - Either Bootstrap or TailwindCSS
 
 ### Database
@@ -52,7 +53,7 @@ This is a digital portfolio meant to show off my current skills along with how m
 
 ### Deployment - Heavily Subject to Change
 - Docker [Learn More](https://www.docker.com/)
-- Fly.io [Learn More](https://fly.io/)
+- Fly.io [Learn More](https://fly.io/), it is likely to be using a shared-cpu-2x VM with the database on a free VM
 
 ### Designing
 - Storyboarding: Figma [Learn More](https://www.figma.com/)
