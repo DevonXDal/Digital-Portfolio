@@ -3,12 +3,13 @@ using Microsoft.AspNetCore.Identity;
 using Newtonsoft.Json.Serialization;
 using Microsoft.Extensions.FileProviders;
 using Portfolio.Data;
-using Portfolio.Models;
 using Microsoft.Net.Http.Headers;
 using System.Text.Json;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.DependencyInjection;
+using Portfolio.Models.MainDb;
+using Microsoft.AspNetCore.Mvc.Versioning;
 
 namespace Portfolio;
 
@@ -30,18 +31,7 @@ public class Startup
         services.AddDbContext<ApplicationDbContext>(options =>
         {
             // Configure the _context to use Microsoft SQL Server.
-            options.UseMySql(
-                env.MainDb,
-                new MariaDbServerVersion(new Version(10, 6, 7)),
-                mySqlOptions =>
-                {
-                    mySqlOptions.EnableRetryOnFailure(
-                        10, 
-                        TimeSpan.FromSeconds(2), 
-                        new List<int>{ }
-                    );
-                }
-            );
+            options.UseNpgsql(env.MainDb);
 
             // Lazy load proxies <- Avoid this when a collection has known needed
             // navigation properties to avoid N + 1. Eager load instead
@@ -60,6 +50,20 @@ public class Startup
             //
             // For more information, visit https://aka.ms/aspaccountconf.
             options.SignIn.RequireConfirmedAccount = false;
+        });
+
+        services.AddEndpointsApiExplorer();
+        services.AddSwaggerGen();
+        services.AddApiVersioning(o =>
+        {
+            o.AssumeDefaultVersionWhenUnspecified = true;
+            o.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
+            o.ReportApiVersions = true;
+            o.ApiVersionReader = ApiVersionReader.Combine(
+                new QueryStringApiVersionReader("api-version"),
+                new HeaderApiVersionReader("X-Version"),
+                new MediaTypeApiVersionReader("ver"));
+
         });
 
         services.AddControllersWithViews().AddNewtonsoftJson(options =>
@@ -94,6 +98,11 @@ public class Startup
             app.UseHsts(); // 30 days by default
         }
         app.UseHttpsRedirection();
+        app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials());
 
         // ----- Add static files -----
         app.UseStaticFiles(new StaticFileOptions

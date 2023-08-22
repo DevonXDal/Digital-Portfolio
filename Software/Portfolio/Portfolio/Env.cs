@@ -29,7 +29,7 @@
 
         public string FileStoragePath => _config["FileStoragePath"];
 
-        public Env(IConfiguration config) 
+        public Env(IConfiguration config)
         {
             _config = config;
         }
