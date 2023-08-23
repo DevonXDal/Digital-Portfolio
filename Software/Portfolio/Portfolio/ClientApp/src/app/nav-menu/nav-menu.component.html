@@ -41,14 +41,7 @@
         <a [routerLink]="['/other-content/updates']" routerLinkActive="active-link" class="block px-4 py-2 flip-colors-on-hover menu-item">Updates</a>
       </div>
     </a>
-    <a class="flex-auto relative group w-1/5 unformatted-link">
-      <button class="block h-16 underline mx-auto">
-        Placeholder <i class="fa-solid fa-chevron-down"></i>
-      </button>
-      <div class="invisible group-hover:visible w-16 shadow-xl absolute bg-theme ml-16 z-50">
-        <a [routerLink]="['/']" routerLinkActive="active-link" class="block px-1 py-2 flip-colors-on-hover menu-item">N/A</a>
-      </div>
-    </a>
+    <app-login-menu class="flex-auto relative group w-1/5"></app-login-menu>
   </div>
   <!-- Inter-Site Links -->
   <div [ngClass]="{'hidden': isExpanded}" id="interSiteLinks" class="container mx-auto flex">

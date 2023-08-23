@@ -13,7 +13,7 @@ namespace Portfolio.Data
         public ApplicationDbContext(DbContextOptions options)
             : base(options)
         {
-
+            Database.EnsureCreated();
         }
     }
 }
