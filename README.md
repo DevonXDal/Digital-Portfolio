@@ -29,6 +29,9 @@ Side Note: I was previously certified in the Comptia A+ (expired May 9, 2022)
 # Digital-Portfolio
 
 This is a digital portfolio meant to show off my current skills along with how my skills have grown in the past. 
+ 
+***NOTE:*** **This project makes use of code from the OpenIddict sample project, Velusia, which is licensed under the Apache 2.0 license**
+See Velusia and its license here: [View OpenIddict Sample Projects](https://github.com/openiddict/openiddict-samples)
 
 ## Tools and Frameworks Used
 
