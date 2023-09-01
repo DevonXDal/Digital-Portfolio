@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Portfolio.Controllers.v1
 {
@@ -26,6 +27,7 @@ namespace Portfolio.Controllers.v1
         /// </summary>
         /// <returns>A Created (201) response if successful</returns>
         [HttpPut]
+        [Authorize("perform:admin-actions")]
         public ActionResult Create()
         {
             return View();
@@ -37,6 +39,7 @@ namespace Portfolio.Controllers.v1
         /// <param name="id">The id that corresponds to the blog-like update post</param>
         /// <returns>An Ok (200) response if successful</returns>
         [HttpPost]
+        [Authorize("perform:admin-actions")]
         public ActionResult Delete(int id)
         {
             try

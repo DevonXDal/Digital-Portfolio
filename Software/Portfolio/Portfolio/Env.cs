@@ -29,6 +29,14 @@
 
         public string FileStoragePath => _config["FileStoragePath"];
 
+        public string Port => _config.GetRequiredSection("Auth")["Port"];
+
+        public string ClientOriginUrl => _config.GetRequiredSection("Auth")["ClientOriginUrl"];
+
+        public string Auth0Domain => _config.GetRequiredSection("Auth")["Domain"];
+
+        public string Auth0Audience => _config.GetRequiredSection("Auth")["Audience"];
+
         public Env(IConfiguration config)
         {
             _config = config;

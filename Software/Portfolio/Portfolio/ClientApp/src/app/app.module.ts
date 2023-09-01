@@ -8,9 +8,6 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
-import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
-import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { PortfolioSummaryComponent } from './portfolio-summary/portfolio-summary.component';
 import { ContactMeComponent } from './contact-me/contact-me.component';
@@ -19,6 +16,9 @@ import { OtherContentModule } from './other-content/other-content.module';
 import { SharedModule } from './shared/shared.module';
 
 import { TabViewModule } from "primeng/tabview";
+import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
+
+import { environment as env } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -33,12 +33,16 @@ import { TabViewModule } from "primeng/tabview";
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    ApiAuthorizationModule,
+    AuthModule.forRoot({
+      ...env.auth0,
+      httpInterceptor: {
+        allowedList: [],
+      },
+    }),
     RouterModule.forRoot([
       { path: '', component: PortfolioSummaryComponent, pathMatch: 'full' },
       { path: 'contact', component: ContactMeComponent },
       { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
     ]),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
@@ -52,7 +56,11 @@ import { TabViewModule } from "primeng/tabview";
     SharedModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent]
 })

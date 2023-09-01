@@ -9,6 +9,12 @@ using Portfolio.Models.MainDb;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using static OpenIddict.Abstractions.OpenIddictConstants;
 using Quartz;
+using Microsoft.AspNetCore.Authorization;
+using Portfolio.Authorization;
+using Portfolio.Requirement;
+using Portfolio.Middlewares;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Portfolio;
 
@@ -34,19 +40,26 @@ public class Startup
 
             // Lazy load proxies
             options.UseLazyLoadingProxies();
-            options.UseOpenIddict();
 
         });
         services.AddDatabaseDeveloperPageExceptionFilter();
 
-        services.AddIdentity<ApplicationUser, IdentityRole>()
-            .AddEntityFrameworkStores<ApplicationDbContext>()
-            .AddDefaultTokenProviders()
-            .AddDefaultUI();
-
 
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
+        services.AddCors(options =>
+        {
+            options.AddDefaultPolicy(policy =>
+            {
+                policy.AllowAnyOrigin()
+                    .WithHeaders(new string[] {
+                        HeaderNames.ContentType,
+                        HeaderNames.Authorization,
+                    })
+                    .WithMethods("GET", "PUT", "POST", "DELETE")
+                    .SetPreflightMaxAge(TimeSpan.FromSeconds(86400));
+            });
+        });
         services.AddApiVersioning(o =>
         {
             o.AssumeDefaultVersionWhenUnspecified = true;
@@ -59,70 +72,31 @@ public class Startup
 
         });
 
-        // ----- START OF CODE FROM THE VELUSIA SAMPLE PROJECT -----
-        services.AddQuartz(options =>
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
         {
-            options.UseMicrosoftDependencyInjectionJobFactory();
-            options.UseSimpleTypeLoader();
-            options.UseInMemoryStore();
+            var audience = env.Auth0Audience;
+                 
+
+            options.Authority =
+                  $"https://{env.Auth0Domain}/";
+            options.Audience = audience;
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateAudience = true,
+                ValidateIssuerSigningKey = true
+            };
         });
-        services.AddQuartzHostedService(options => options.WaitForJobsToComplete = true);
 
-        services.AddOpenIddict()
-
-            // Register the OpenIddict core components.
-            .AddCore(options =>
+        services.AddAuthorization(options =>
+        {
+            options.AddPolicy("perform:admin-actions", policy =>
             {
-                // Configure OpenIddict to use the Entity Framework Core stores and models.
-                // Note: call ReplaceDefaultEntities() to replace the default OpenIddict entities.
-                options.UseEntityFrameworkCore()
-                       .UseDbContext<ApplicationDbContext>();
-
-                // Enable Quartz.NET integration.
-                options.UseQuartz();
-            })
-
-            
-
-            // Register the OpenIddict server components.
-            .AddServer(options =>
-            {
-                // Enable the authorization, logout, token and userinfo endpoints.
-                options.SetAuthorizationEndpointUris("connect/authorize")
-                       .SetLogoutEndpointUris("connect/logout")
-                       .SetTokenEndpointUris("connect/token")
-                       .SetUserinfoEndpointUris("connect/userinfo");
-
-                // Mark the "email", "profile" and "roles" scopes as supported scopes.
-                options.RegisterScopes(Scopes.Email, Scopes.Profile, Scopes.Roles);
-
-                // Note: this sample only uses the authorization code flow but you can enable
-                // the other flows if you need to support implicit, password or client credentials.
-                options.AllowAuthorizationCodeFlow();
-
-                // Register the signing and encryption credentials.
-                options.AddDevelopmentEncryptionCertificate()
-                       .AddDevelopmentSigningCertificate();
-
-                // Register the ASP.NET Core host and configure the ASP.NET Core-specific options.
-                options.UseAspNetCore()
-                       .EnableAuthorizationEndpointPassthrough()
-                       .EnableLogoutEndpointPassthrough()
-                       .EnableTokenEndpointPassthrough()
-                       .EnableUserinfoEndpointPassthrough()
-                       .EnableStatusCodePagesIntegration();
-            })
-
-            // Register the OpenIddict validation components.
-            .AddValidation(options =>
-            {
-                // Import the configuration from the local OpenIddict server instance.
-                options.UseLocalServer();
-
-                // Register the ASP.NET Core host.
-                options.UseAspNetCore();
+                policy.Requirements.Add(new RbacRequirement("perform:admin-actions"));
             });
-        // ----- END OF CODE FROM THE VELUSIA SAMPLE PROJECT -----
+        });
+
+        services.AddSingleton<IAuthorizationHandler, RbacHandler>();
 
         services.AddControllersWithViews().AddNewtonsoftJson(options =>
         {
@@ -157,11 +131,6 @@ public class Startup
             app.UseStatusCodePagesWithReExecute("~/error");
         }
         app.UseHttpsRedirection();
-        app.UseCors(x => x
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .SetIsOriginAllowed(origin => true) // allow any origin
-                .AllowCredentials());
 
         // ----- Add static files -----
 
@@ -188,8 +157,11 @@ public class Startup
         });
 
 
-        
+
+        app.UseErrorHandler();
+        app.UseSecureHeaders();
         app.UseRouting();
+        app.UseCors();
 
         app.UseAuthentication();
         app.UseAuthorization();

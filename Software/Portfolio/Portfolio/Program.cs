@@ -18,9 +18,8 @@ public static class Program
             }
             config.AddJsonFile("secrets.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables();
+
         });
-
-
 
         builder.Build().Run();
     }

@@ -1,6 +1,7 @@
 import { style } from '@angular/animations';
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { NavigationEnd, Router, RouterEvent } from '@angular/router';
+import { AuthService } from '@auth0/auth0-angular';
 import { filter } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -12,8 +13,9 @@ import { environment } from 'src/environments/environment';
 export class AppComponent implements OnInit {
   public env = environment;
   public shouldShowSummaryReturnLink = false;
+  isAuth0Loading$ = this.auth.isLoading$;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private auth: AuthService) {}
 
   /// Prepares the application by determining whether to use light mode or dark mode.
   ngOnInit(): void {

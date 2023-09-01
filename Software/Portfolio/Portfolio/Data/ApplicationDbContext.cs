@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Portfolio.Models.MainDb;
 
 namespace Portfolio.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    /// <summary>
+    /// This ApplicationDbContext provides a database context object used to track user actions and data to display.
+    /// </summary>
+    public class ApplicationDbContext : DbContext
     {
         public DbSet<BlogLikeUpdate> BlogLikeUpdates { get; set; }
 

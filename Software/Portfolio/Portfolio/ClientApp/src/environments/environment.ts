@@ -4,7 +4,19 @@
 
 export const environment = {
   production: false,
-  uiMode: 'light'
+  uiMode: 'light',
+  auth0: {
+    domain: 'dev-llzpcvhdu4afegp2.us.auth0.com',
+    clientId: 'P0w90qzKWM1ctKDgPegI771hVCxBU4Gf',
+    authorizationParams: {
+      audience: 'https://hello-world.example.com',
+      redirect_uri: 'http://localhost:4040/callback',
+    },
+    errorPath: '/callback',
+  },
+  api: {
+    serverUrl: 'http://localhost:6060',
+  },
 };
 
 /*
