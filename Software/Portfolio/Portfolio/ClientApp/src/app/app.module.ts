@@ -6,8 +6,6 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { PortfolioSummaryComponent } from './portfolio-summary/portfolio-summary.component';
 import { ContactMeComponent } from './contact-me/contact-me.component';
@@ -19,15 +17,16 @@ import { TabViewModule } from "primeng/tabview";
 import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
 
 import { environment as env } from '../environments/environment';
+import { LoginMenuComponent } from './nav-menu/login-menu/login-menu.component';
+import { CallbackModule } from './auth0/features/callback/callback.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
-    CounterComponent,
-    FetchDataComponent,
     PortfolioSummaryComponent,
-    ContactMeComponent
+    ContactMeComponent,
+    LoginMenuComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -42,7 +41,6 @@ import { environment as env } from '../environments/environment';
     RouterModule.forRoot([
       { path: '', component: PortfolioSummaryComponent, pathMatch: 'full' },
       { path: 'contact', component: ContactMeComponent },
-      { path: 'counter', component: CounterComponent },
     ]),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
@@ -53,6 +51,7 @@ import { environment as env } from '../environments/environment';
     LearnMoreModule,
     OtherContentModule,
     TabViewModule,
+    CallbackModule,
     SharedModule,
   ],
   providers: [

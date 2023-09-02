@@ -1,0 +1,18 @@
+<a class="unformatted-link" *ngIf="(isAuthenticated$ | async) !== true">
+    <button class="block h-16 underline mx-auto">
+      Not Logged In <i class="fa-solid fa-chevron-down"></i>
+    </button>
+    <div class="invisible group-hover:visible w-48 shadow-xl absolute bg-theme ml-16 z-50">
+        <a (click)="handleSignUp()"  class="block px-4 py-2 flip-colors-on-hover menu-item ">Sign Up</a>
+        <a (click)="handleLogin()" class="block px-4 py-2 flip-colors-on-hover menu-item">Login</a>
+    </div>
+</a>
+
+<a class="unformatted-link" *ngIf="isAuthenticated$ | async">
+    <button class="block h-16 underline mx-auto">
+        Hello {{ userName$ | async }} <i class="fa-solid fa-chevron-down"></i>
+    </button>
+    <div class="invisible group-hover:visible w-48 shadow-xl absolute bg- ml-16 z-50" >
+      <a (click)="handleLogout()" title="Logout" class="block px-4 py-2 flip-colors-on-hover menu-item">Logout</a>
+    </div>
+</a>

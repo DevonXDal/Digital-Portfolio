@@ -10,12 +10,12 @@ export const environment = {
     clientId: 'P0w90qzKWM1ctKDgPegI771hVCxBU4Gf',
     authorizationParams: {
       audience: 'https://hello-world.example.com',
-      redirect_uri: 'http://localhost:4040/callback',
+      redirect_uri: 'https://localhost:4000/callback',
     },
     errorPath: '/callback',
   },
   api: {
-    serverUrl: 'http://localhost:6060',
+    serverUrl: 'http://localhost:8080',
   },
 };
 

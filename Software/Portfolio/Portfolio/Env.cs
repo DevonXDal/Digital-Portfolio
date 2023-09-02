@@ -29,13 +29,13 @@
 
         public string FileStoragePath => _config["FileStoragePath"];
 
-        public string Port => _config.GetRequiredSection("Auth")["Port"];
+        public string Port => _config.GetRequiredSection("Auth0")["Port"];
 
-        public string ClientOriginUrl => _config.GetRequiredSection("Auth")["ClientOriginUrl"];
+        public string ClientOriginUrl => _config.GetRequiredSection("Auth0")["ClientOriginUrl"];
 
-        public string Auth0Domain => _config.GetRequiredSection("Auth")["Domain"];
+        public string Auth0Domain => _config.GetRequiredSection("Auth0")["Domain"];
 
-        public string Auth0Audience => _config.GetRequiredSection("Auth")["Audience"];
+        public string Auth0Audience => _config.GetRequiredSection("Auth0")["Audience"];
 
         public Env(IConfiguration config)
         {

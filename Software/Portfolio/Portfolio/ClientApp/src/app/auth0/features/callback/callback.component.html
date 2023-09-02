@@ -1,5 +1,5 @@
 <ng-container *ngIf="error$ | async as error; else noError">
-  <app-page-layout>
+
     <div class="content-layout">
       <h1 id="page-title" class="content__title">Error</h1>
       <div class="content__body">
@@ -8,12 +8,9 @@
         </p>
       </div>
     </div>
-  </app-page-layout>
 </ng-container>
 <ng-template #noError>
   <div class="page-layout">
-    <app-nav-bar></app-nav-bar>
-    <app-mobile-nav-bar></app-mobile-nav-bar>
     <div class="page-layout__content">
       <ng-content></ng-content>
     </div>

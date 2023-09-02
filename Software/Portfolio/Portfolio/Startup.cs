@@ -105,6 +105,7 @@ public class Startup
         services.AddRazorPages();
 
         // ----- Add SPA Static Files -----
+        
         services.AddSpaStaticFiles(configuration =>
         {
             configuration.RootPath = "ClientApp/dist"; // Should never change
@@ -155,40 +156,50 @@ public class Startup
                     "public,max-age=" + maxStaticFileCacheLifeSeconds;
             }
         });
+        if (!env.IsDevelopment())
+        {
+            app.UseSpaStaticFiles();
+        }
 
+        // Reference link: https://stackoverflow.com/questions/61268117/how-to-map-fallback-in-asp-net-core-web-api-so-that-blazor-wasm-app-only-interc
+        app.MapWhen(context => !context.Request.Path.StartsWithSegments("/api"), angular => {
+            angular.UseSpa(spa =>
+            {
+                // To learn more about options for serving an Angular SPA from ASP.NET Core,
+                // see https://go.microsoft.com/fwlink/?linkid=864501
+
+                spa.Options.SourcePath = "ClientApp";
+                if (env.IsDevelopment())
+                {
+                    spa.Options.DevServerPort = 80;
+                    spa.UseAngularCliServer(npmScript: "start");
+                }
+            });
+        });
 
 
         app.UseErrorHandler();
         app.UseSecureHeaders();
-        app.UseRouting();
+        // Use Routing
         app.UseCors();
 
         app.UseAuthentication();
         app.UseAuthorization();
 
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllers();
-            endpoints.MapControllerRoute(
-                name: "default",
-                pattern: "{controller}/{action=Index}/{id?}"
-            );
-            endpoints.MapRazorPages();
-            endpoints.MapFallbackToFile("index.html");
-        });
-
         
-        app.UseSpa(spa =>
-        {
-            // To learn more about options for serving an Angular SPA from ASP.NET Core,
-            // see https://go.microsoft.com/fwlink/?linkid=864501
 
-            spa.Options.SourcePath = "ClientApp";
-
-            if (env.IsDevelopment())
+        app.MapWhen(context => context.Request.Path.StartsWithSegments("/api"), api => {
+            api.UseRouting();
+            api.UseEndpoints(endpoints =>
             {
-                spa.UseAngularCliServer(npmScript: "start");
-            }
+                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller}/{action=Index}/{id?}"
+                );
+                endpoints.MapRazorPages();
+                //endpoints.MapFallbackToFile("index.html");
+            });
         });
     }
 }
