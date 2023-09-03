@@ -44,7 +44,7 @@ This is a digital portfolio meant to show off my current skills along with how m
 - ASP.NET 6 [Learn More](https://dotnet.microsoft.com/en-us/)
 - EF Core [Learn More](https://learn.microsoft.com/en-us/ef/core/)
 - Auth0 [Learn More](https://auth0.com/)
-- Either Bootstrap or TailwindCSS
+- Bootstrap as Necessary
 
 ### Database
 - Database: PostgreSQL [Learn More](https://www.postgresql.org/)
