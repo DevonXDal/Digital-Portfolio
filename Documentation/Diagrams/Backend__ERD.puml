@@ -3,11 +3,9 @@
 note as n01 
     As integrated projects and potentially comments are added, 
     the ERD will be extended to allow for additional features.
-
-    OAuth and Identity are omitted for simplicity.
-    ApplicationUser has an admin role for the admin account 
-    and it autofills the contact form with relevent information.
-
+	
+	ApplicationUser has reduced information as other information,
+	is currently unnecessary and is maintained by Auth0.
     
 end note
 
@@ -35,11 +33,9 @@ entity "EntityBase" as e00 {
 entity "ApplicationUser" as e01 {
     * Id : text <<generated>>
     --
-    * FirstName : text 
-    * LastName : text
+    * UserId : integer 
+    * Name : text
     * Email : VARCHAR(256)
-    PhoneNumber : text
-    **...**
 }
 
 ' RelatedFile connects the filesystem to the database
