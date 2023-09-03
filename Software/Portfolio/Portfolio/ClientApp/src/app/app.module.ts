@@ -41,7 +41,7 @@ import { CallbackModule } from './auth0/features/callback/callback.module';
     RouterModule.forRoot([
       { path: '', component: PortfolioSummaryComponent, pathMatch: 'full' },
       { path: 'contact', component: ContactMeComponent },
-    ]),
+    ], {scrollPositionRestoration: 'enabled'}),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable

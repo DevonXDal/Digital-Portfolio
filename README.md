@@ -49,7 +49,7 @@ This is a digital portfolio meant to show off my current skills along with how m
 ### Database
 - Database: PostgreSQL [Learn More](https://www.postgresql.org/)
 - Development DBMS: PgAdmin [Learn More](https:/pgadmin.org/)
-- Production DBMS: Fly PostgeSQL [Learn More](https://fly.io/)
+- Production DBMS: Fly PostgreSQL [Learn More](https://fly.io/)
 
 ### Deployment - Heavily Subject to Change
 - Docker [Learn More](https://www.docker.com/)
