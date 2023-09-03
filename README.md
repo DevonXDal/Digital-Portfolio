@@ -13,7 +13,7 @@ Before college, I went to Williamstown High School. During my Junior and Senior 
 ## Other Information
 
 - I reside in the West Virginia side of the Mid-Ohio Valley
-- I am currently 22 years old
+- I am currently 22 years old (Born: 2000-11-10)
 - I have not failed any college or high school courses
 
 ## Certifications
