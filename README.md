@@ -4,7 +4,7 @@ More information will be included in this README once the portfolio has been dep
 
 # Who Am I?
 
-My name is Devon Dalrymple and I can be contacted at devonxbusiness@gmail.com. At the time of writing this README (2023-05-19), I have recently finished my final semester of my bachelor's degree at the West Virginia University of Parkersburg, for a BAT in software engineering. I have my associates degree as an AAS for computer science. My GPA is 3.9+. I am creating this digital portfolio to replace one (a Google Web site) that I made back in 2017 before I had even started college. This is being done with intentions to use with finding employment as quickly as reasonably possible.
+My name is Devon Dalrymple and I can be contacted at devonxbusiness@gmail.com or admin@devon-dalrymple.com. At the time of writing this README (2023-05-19), I have recently finished my final semester of my bachelor's degree at the West Virginia University of Parkersburg, for a BAT in software engineering. I have my associates degree as an AAS for computer science. My GPA is 3.9+. I am creating this digital portfolio to replace one (a Google Web site) that I made back in 2017 before I had even started college. This is being done with intentions to use with finding employment as quickly as reasonably possible.
 
 Most of my experience between personal and school projects is around building Web sites in ASP.NET (started with 2.1 but have experience with 3.1, 5, and 6). This digital portfolio is meant to showcase those skills along with my newly developing skills in Angular (taking an independent study this semester on it along with doing this portfolio to become knowledgable). I have experience with making projects using raw CSS, Bootstrap, Materialize, and Tailwind CSS.
 
