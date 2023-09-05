@@ -11,7 +11,7 @@ namespace Portfolio.Controllers.v1
     /// This BlogLikeUpdatesController handles API calls related to the update posts that the user will view to be updated
     /// on current professional life news.
     /// </summary>
-    [Route("api/v{version:apiVersion}/[controller]/[action]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiVersion("1.0")]
     [ApiController]
     public class BlogLikeUpdatesController : Controller

@@ -72,6 +72,11 @@
         /// </summary>
         public string Auth0Audience => _config.GetRequiredSection("Auth0")["Audience"];
 
+        /// <summary>
+        /// The email used for the admin account and that is targeted by submitted contact me forms.
+        /// </summary>
+        public string AdminEmail => _config["AdminEmail"];
+
 
         public Env(IConfiguration config)
         {
