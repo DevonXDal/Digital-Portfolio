@@ -121,16 +121,43 @@ namespace Portfolio.Helpers.Handlers
         public bool IsRelatedFileImage(IFormFile file) => file.ContentType.Contains("image/", StringComparison.OrdinalIgnoreCase);
 
         /// <summary>
+        /// Gets the file and returns its byte array form.
+        /// </summary>
+        /// <param name="file">The related file mapping entity from the database</param>
+        /// <returns>The byte array holding file data</returns>
+        public byte[] GetFileAsBytes(RelatedFile file)
+        {
+            string filePath = GetAbsoluteFilePathOfRelatedFile(file);
+
+
+            var mimeType = GetMimeType(filePath);
+
+            byte[] fileBytes = null;
+            try
+            {
+                fileBytes = File.ReadAllBytes(Path.GetFullPath(filePath));
+                if (!File.Exists(filePath))
+                {
+                    _logger.LogError($"The file was not found on the system and could not be downloaded, path was: {filePath}");
+                }
+            }
+            catch (IOException e)
+            {
+                _logger.LogError(e, $"An IOException was thrown attempting to access the file at path: {filePath}");
+            }
+
+
+            return fileBytes;
+        }
+
+        /// <summary>
         /// Gets the file an returns it as a file download result.
         /// </summary>
         /// <param name="file">The related file mapping entity from the database</param>
-        /// <returns>The result to download a file on the client side</returns>
-        public FileContentResult GetFile(RelatedFile file)
+        /// <returns>The result to download a file on the client side, null if not found</returns>
+        public FileContentResult? GetFileResult(RelatedFile file)
         {
-            string filePath;
-
-            filePath = GetAbsoluteFilePathOfRelatedFile(file);
-
+            string filePath = GetAbsoluteFilePathOfRelatedFile(file);
 
             var mimeType = GetMimeType(filePath);
 
@@ -416,6 +443,15 @@ namespace Portfolio.Helpers.Handlers
         public string ReadFileStoragePath()
         {
             return _env.FileStoragePath;
+        }
+        
+        /// <summary>
+        /// Takes an array of bytes representing a file and converts it into Base64 form.
+        /// </summary>
+        /// <returns>The Base64 form of the file</returns>
+        public string ToBase64(byte[] fileBytes)
+        {
+            return Convert.ToBase64String(fileBytes);
         }
 
         //Uses the arguments for the parameters to do similar validation. Returns false if validation failed.

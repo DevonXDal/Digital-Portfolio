@@ -8,7 +8,6 @@ namespace Portfolio.Models.MainDb
     /// It is used in conjuction with other models to provide access to the files that they have stored.
     /// 
     /// Author: Devon X. Dalrymple
-    /// Version: 2022-12-08
     /// </summary>
     public class RelatedFile : EntityBase
     {

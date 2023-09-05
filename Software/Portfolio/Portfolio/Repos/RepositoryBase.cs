@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Portfolio.Repositories.Interfaces;
 
 namespace Portfolio.Data
 {
@@ -14,7 +15,7 @@ namespace Portfolio.Data
     /// The <c>RepositoryBase</c> class uses generics in order to manipulate data of the table specified during its creation.
     /// </summary>
     /// <typeparam name="EntityBase">The particular table's model that needs to have its data modified</typeparam>
-    public class RepositoryBase<T> where T : EntityBase
+    public class RepositoryBase<T>: IRepo<T> where T : EntityBase
     {
         protected ApplicationDbContext _context;
         protected DbSet<T> _dbSet;

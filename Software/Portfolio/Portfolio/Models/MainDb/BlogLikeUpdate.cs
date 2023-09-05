@@ -23,18 +23,19 @@ namespace Portfolio.Models.MainDb
         /// <summary>
         /// The id of the related file to fetch from the database.
         /// </summary>
-        public int RelatedFileId { get; set; }
+        public int? RelatedFileId { get; set; }
 
         /// <summary>
         /// The RelatedFile entity that corresponds to this blog-like update post.
         /// </summary>
         [ForeignKey(nameof(RelatedFileId))]
-        public virtual RelatedFile RelatedFile { get; set; }
+        public virtual RelatedFile? RelatedFile { get; set; }
 
         /// <summary>
-        /// The form file that holds the image to be sent back in a GET request.
+        /// The base64 form of the image, so that it can be sent back as json.
         /// </summary>
         [NotMapped]
-        public IFormFile ImageFile { get; set; }
+        public string? ImageBase64 { get; set; }
+
     }
 }

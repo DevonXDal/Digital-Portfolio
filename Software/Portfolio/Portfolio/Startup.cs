@@ -15,6 +15,8 @@ using Portfolio.Requirement;
 using Portfolio.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Portfolio.Repositories.Interfaces;
+using Portfolio.Helpers.Handlers;
 
 namespace Portfolio;
 
@@ -30,7 +32,7 @@ public class Startup
         // ----- Set up static names for environment variables -----
         var env = new Env(Configuration);
 
-        services.AddSingleton<Env>(env); // Early injection of environment variables
+        services.AddSingleton(env); // Early injection of environment variables
 
         // ----- Set up database, identity, OAuth (IdentityServer) -----
         services.AddDbContext<ApplicationDbContext>(options =>
@@ -43,6 +45,14 @@ public class Startup
 
         });
         services.AddDatabaseDeveloperPageExceptionFilter();
+
+        // ----- Dependency inject database repositories and the handlers
+        services.AddScoped<IRepo<ApplicationUser>, RepositoryBase<ApplicationUser>>();
+        services.AddScoped<IRepo<BlogLikeUpdate>, RepositoryBase<BlogLikeUpdate>>();
+        services.AddScoped<IRepo<RelatedFile>, RepositoryBase<RelatedFile>>();
+
+        services.AddScoped<EmailHandler>();
+        services.AddScoped<FileHandler>();
 
 
         services.AddEndpointsApiExplorer();
