@@ -18,7 +18,7 @@
     <div class="card">
         <h2 class="mx-auto text-center text-2xl mb-8 middle-font">Contact Me</h2>
 
-        <form class="flex flex-col" #contactMeForm (ngSubmit)="sendEmail(contactMeForm)">
+        <form class="flex flex-col" #contactMeForm="ngForm" (ngSubmit)="sendEmail(contactMeForm)">
             <div class="flex flex-row m-2 justify-center">
                 <div class="flex flex-col gap-8 text-xl w-1/3 lg:w-1/4">
                         <label for="nameField">Name:</label>
@@ -27,13 +27,14 @@
                         <label for="messageField">Message:</label>
                 </div>
                 <div class="flex flex-col gap-8 w-2/3  lg:w-2/4">
-                        <input id="nameField" name="Name" type="text">
-                        <input id="emailField" name="Email" type="email">
-                        <input id="phoneField" name="Phone" type="phone">
-                        <textarea id="messageField" name="Message" rows="5" cols="30"></textarea>
+                        <input id="nameField" [(ngModel)]="model.name" name="Name" type="text" required>
+                        <input id="emailField" [(ngModel)]="model.email" name="Email" type="email" required>
+                        <input id="phoneField" [(ngModel)]="model.phone" name="Phone" type="phone">
+                        <textarea id="messageField" [(ngModel)]="model.message" name="Message" rows="5" cols="30" required></textarea>
                 </div>
             </div>
-            <button class="btn-primary text-xl mx-auto" type="submit">Send Message</button>
+            <button class="btn-primary text-xl mx-auto" type="submit" *ngIf="!isLoading">Send Message</button>
+            <p-progressSpinner *ngIf="isLoading"></p-progressSpinner>
         </form>
         
         

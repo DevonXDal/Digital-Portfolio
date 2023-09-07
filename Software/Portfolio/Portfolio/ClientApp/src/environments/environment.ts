@@ -16,6 +16,7 @@ export const environment = {
   },
   api: {
     serverUrl: 'http://localhost:8080',
+    versionUsed: 1
   },
 };
 

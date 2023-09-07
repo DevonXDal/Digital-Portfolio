@@ -18,7 +18,7 @@ export class LoginMenuComponent implements OnInit {
     this.isAuthenticated$ = this.auth.isAuthenticated$;
 
     // Observe the state of who is logged in, if there is a user, then grab the name, otherwise put null
-    this.userName$ = this.auth.user$.pipe(map(u => (u && u.name) || null))
+    this.userName$ = this.auth.user$.pipe(map(u => (u && u.name) || null));
   }
 
   public handleSignUp(): void {

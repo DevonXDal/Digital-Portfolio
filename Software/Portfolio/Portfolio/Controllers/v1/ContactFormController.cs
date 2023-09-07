@@ -47,7 +47,7 @@ namespace Portfolio.Controllers.v1
              * ...
              */
             _emailHandler.SendEmail(_env.AdminEmail, $"Potential Job: {formData.Name} Sent a Contact Form Submission",
-                $"Email: {formData.Email}\nPhone Number: {(formData.Phone ?? "N/A")}\n\n{formData.Message}");
+                $"Email: {formData.Email}\nPhone Number: {(!string.IsNullOrEmpty(formData.Phone) ? formData.Phone : "N/A")}\n\n{formData.Message}");
 
             return Ok();
         }
