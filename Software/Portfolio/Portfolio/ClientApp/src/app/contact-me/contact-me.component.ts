@@ -45,7 +45,7 @@ export class ContactMeComponent implements OnInit {
 
   async sendEmail(contactForm: NgForm): Promise<void> {
     if (contactForm.invalid) {
-      this.toastService.add({severity: 'error', summary: 'Form is Invalid', detail: "The name, email, and message fields are required."});
+      this.toastService.add({key: 'tr', severity: 'error', summary: 'Form is Invalid', detail: "The name, email, and message fields are required."});
       return;
     }
 
@@ -53,9 +53,9 @@ export class ContactMeComponent implements OnInit {
     let serviceResponse: string = await this.apiService.sendContactForm(this.model);
 
     if (serviceResponse) {
-      this.toastService.add({severity: 'error', summary: 'Attempt Failed', detail: serviceResponse});
+      this.toastService.add({key: 'tr', severity: 'error', summary: 'Attempt Failed', detail: serviceResponse});
     } else {
-      this.toastService.add({severity: 'success', summary: 'Sent Form', detail: "The form has been sent."});
+      this.toastService.add({key: 'tr', severity: 'success', summary: 'Sent Form', detail: "The form has been sent."});
       this.resetModel(); 
     }
 

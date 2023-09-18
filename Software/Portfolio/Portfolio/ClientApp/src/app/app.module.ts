@@ -21,6 +21,7 @@ import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
 import { environment as env } from '../environments/environment';
 import { LoginMenuComponent } from './nav-menu/login-menu/login-menu.component';
 import { CallbackModule } from './auth0/features/callback/callback.module';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { CallbackModule } from './auth0/features/callback/callback.module';
       useClass: AuthHttpInterceptor,
       multi: true,
     },
+    MessageService
   ],
   bootstrap: [AppComponent]
 })
