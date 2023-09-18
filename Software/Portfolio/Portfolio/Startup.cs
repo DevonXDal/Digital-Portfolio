@@ -17,6 +17,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Portfolio.Repositories.Interfaces;
 using Portfolio.Helpers.Handlers;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 namespace Portfolio;
 
@@ -56,7 +58,18 @@ public class Startup
 
 
         services.AddEndpointsApiExplorer();
-        services.AddSwaggerGen();
+        services.AddSwaggerGen(options =>
+        {
+            options.SwaggerDoc("v1", new OpenApiInfo
+            {
+                Version = "v1",
+                Title = "Digital Portfolio API",
+                Description = "An API for a digital portfolio made by Devon Dalrymple"
+            });
+
+            var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+        });
         services.AddCors(options =>
         {
             options.AddDefaultPolicy(policy =>
@@ -169,6 +182,12 @@ public class Startup
         if (!env.IsDevelopment())
         {
             app.UseSpaStaticFiles();
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                options.RoutePrefix = String.Empty;
+            });
         }
 
         // Reference link: https://stackoverflow.com/questions/61268117/how-to-map-fallback-in-asp-net-core-web-api-so-that-blazor-wasm-app-only-interc

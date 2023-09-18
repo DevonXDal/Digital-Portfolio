@@ -29,7 +29,7 @@ namespace Portfolio.Controllers.v1
         /// </summary>
         /// <returns>Ok 200 if successful, otherwise Bad Request 400</returns>
         [HttpPut]
-        public IActionResult SendContactForm(ContactMeFormData formData)
+        public IActionResult SendContactForm([FromForm] ContactMeFormData formData)
         {
             if (!ModelState.IsValid)
             {

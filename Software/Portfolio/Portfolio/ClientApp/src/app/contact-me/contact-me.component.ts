@@ -44,13 +44,13 @@ export class ContactMeComponent implements OnInit {
   }
 
   async sendEmail(contactForm: NgForm): Promise<void> {
-    if (contactForm.invalid) {
+    if (contactForm.invalid || contactForm.invalid == null) {
       this.toastService.add({key: 'tr', severity: 'error', summary: 'Form is Invalid', detail: "The name, email, and message fields are required."});
       return;
     }
 
     this.isLoading = true;
-    let serviceResponse: string = await this.apiService.sendContactForm(this.model);
+    let serviceResponse: string = await this.apiService.sendContactForm(this.model as ContactMessage);
 
     if (serviceResponse) {
       this.toastService.add({key: 'tr', severity: 'error', summary: 'Attempt Failed', detail: serviceResponse});
